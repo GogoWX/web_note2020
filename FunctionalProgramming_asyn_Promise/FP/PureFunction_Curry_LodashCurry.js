@@ -23,7 +23,7 @@ function checkAge(age) {
     return age >= mini
 }
 
-//纯函数（有硬编码，后续可以通过柯里化解决，如下方）
+//纯函数（有硬编码，可以通过柯里化解决，如下方）
 function checkAge(age) {
     let mini = 18
     return age >= mini
@@ -32,6 +32,10 @@ function checkAge(age) {
 //柯里化（Haskell Brooks Curry）
 //当一个函数有多个参数的时候先传递一部分参数调用它（这部分参数以后永远不变）
 //然后返回一个新的函数接收剩余的参数，返回结果
+//柯里化可以让我们给一个函数传递较少的参数得到一个已经记住了某些固定参数的新函数
+//这是一种对函数参数的‘缓存’
+//让函数变得更加灵活，让函数的粒度更小
+//可以把多元函数转换成一元函数，可以组合使用函数产生强大的功能
 
 function checkAge2(min,age) {//解决硬编码问题
     return age >= min
@@ -51,7 +55,7 @@ let checkAge20 = checkAgeH(20)
 
 console.log(checkAge18(20))
 
-//lodash中的柯里化函数（通用柯里化函数）_.curry(func)
+//lodash中的柯里化函数（复用、简化的柯里化函数）_.curry(func)
 //功能：创建一个函数，该函数接收一个或者多个func参数，如果func所需要的参数都被提供则执行func并返回执行的结果，否则继续返回该函数等待接收剩余的参数
 const _ = require('lodash')
 //lodash中的 curry基本使用
@@ -64,4 +68,49 @@ const curried = _.curry(getSum)
 console.log(curried(1,2,3))
 console.log(curried(1)(2,3))
 console.log(curried(1,2)(3))
+console.log('模拟lodash中的curry方法')
+//模拟实现 lodash 中的 curry 方法
+function curry(func) {
+    return function curriedFunc(...args) {
+        //判断实参（func）和形参（args）的个数
+        if(args.length < func.length) {
+            return function() {
+                return curriedFunc(...args.concat(Array.from(arguments)))
+            }
+        }
+        return func(...args)
+    }
+}
+
+const curriedN = curry(getSum)
+console.log(curriedN(1,2,3))
+console.log(curriedN(1)(2,3))
+console.log(curriedN(1,2)(3))
+
+//柯里化案例
+
+function match (reg,str) {//返回字符串中符合正则表达式部分的数组形式
+    return str.match(reg)
+}
+
+const matchC = _.curry((reg,str) => {//柯里化
+    return str.match(reg)
+})
+
+const haveSpace = matchC(/\s+/g)
+const haveNumber = matchC(/\d+/g)
+
+console.log(haveSpace('hell world'))
+console.log(haveNumber('12abc5'))
+console.log(haveNumber('abc'))
+
+//过滤数组中含有匹配正则的元素
+const filter = _.curry(function(func,array) {
+    return array.filter(func)
+})
+console.log(filter(haveSpace,['John Connor','John_donne']))
+const findeSpace = filter(haveSpace)
+console.log(findeSpace(['John Connor','John_donne']))
+
+
 
