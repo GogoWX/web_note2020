@@ -23,8 +23,45 @@ function checkAge(age) {
     return age >= mini
 }
 
-//纯函数（有硬编码，后续可以通过柯里化解决？）
+//纯函数（有硬编码，后续可以通过柯里化解决，如下方）
 function checkAge(age) {
     let mini = 18
     return age >= mini
 }
+
+//柯里化（Haskell Brooks Curry）
+//当一个函数有多个参数的时候先传递一部分参数调用它（这部分参数以后永远不变）
+//然后返回一个新的函数接收剩余的参数，返回结果
+
+function checkAge2(min,age) {//解决硬编码问题
+    return age >= min
+}
+
+function checkAgeH (min) {
+    return function (age) {
+        return age > min
+    }
+}
+
+//es6箭头函数简便写法
+let checkAgeHES = min => (age => age >= min)
+
+let checkAge18 = checkAgeH(18)
+let checkAge20 = checkAgeH(20)
+
+console.log(checkAge18(20))
+
+//lodash中的柯里化函数（通用柯里化函数）_.curry(func)
+//功能：创建一个函数，该函数接收一个或者多个func参数，如果func所需要的参数都被提供则执行func并返回执行的结果，否则继续返回该函数等待接收剩余的参数
+const _ = require('lodash')
+//lodash中的 curry基本使用
+
+function getSum (a,b,c) {
+    return a+b+c
+}
+
+const curried = _.curry(getSum)
+console.log(curried(1,2,3))
+console.log(curried(1)(2,3))
+console.log(curried(1,2)(3))
+

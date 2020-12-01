@@ -42,3 +42,4 @@ let getAreaWithMemory2 = memoize(getArea)
 console.log(getAreaWithMemory2(4))
 console.log(getAreaWithMemory2(4))
 console.log(getAreaWithMemory2(3))
+
