@@ -6,6 +6,8 @@
 - [强类型与弱类型](/TypeScript/strong&week.md)
 - [静态类型与动态类型](/TypeScript/static&dynamic.md)
 - [JavaScript自有类型系统的问题](/TypeScript/js_type.md)
-- [Flow静态类型检查方案]()
+- [Flow静态类型检查方案](/TypeScript/flow.md)
 - [TypeScript语言规范与基本应用]()
+
+
 
