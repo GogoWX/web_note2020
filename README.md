@@ -1,4 +1,4 @@
-# 高级前端笔记
+# 前端笔记
 
 ### TypeScript
 解决JavaScript自有的类型系统不足，大大提高JavaScript代码的可靠程度
