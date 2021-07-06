@@ -30,5 +30,5 @@ yarn babel src -d dist
 ```
 >个人感觉babel更好些，编译移除后代码格式更规范
 
-[flow标记示例](/TypeScript/flow/src/flow.js)
+[代码示例](/TypeScript/flow/src/flow.js)
 
