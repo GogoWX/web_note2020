@@ -32,6 +32,11 @@ yarn babel src -d dist
 >babel去除注解，编译后会改变代码原有格式
 ### 类型注释对应的可赋值范围
 ```
+const a:string = 'string'
+const b:number = Infinity //NaN // 100
+const c:boolean = true //false
+const d:null = null
+const e:volid = undefined
 ```
 
 [代码示例](/TypeScript/flow/src/flow.js)
