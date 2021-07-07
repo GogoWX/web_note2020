@@ -11,6 +11,7 @@ yarn flow //运行flow检测 运行之前需要在被检测的代码页设置@fl
 yarn flow stop //停止flow
 ```
 >注意：使用flow时需要关闭工具的代码检测工具，vscode在设置中搜索javascript validate,取消勾选
+
 >可以通过安装vscode插件'Flow Language Support'，直接标记出检测结果，而不用每次运行检测
 ### 编译移除类型注解
 - 方式一：使用flow自有的remove插件移除
