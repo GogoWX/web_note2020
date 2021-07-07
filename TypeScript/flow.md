@@ -29,7 +29,7 @@ yarn babel src -d dist
     "presets": ["@babel/preset-flow"]
 }
 ```
->个人感觉babel更好些，编译移除后代码格式更规范
+>babel去除注解，编译后会改变代码原有格式
 
 [代码示例](/TypeScript/flow/src/flow.js)
 
