@@ -31,13 +31,21 @@ yarn babel src -d dist
 ```
 >babel去除注解，编译后会改变代码原有格式
 ### 类型注释对应的可赋值范围
+- 基础类型
 ```
 const a:string = 'string'
 const b:number = Infinity //NaN // 100
 const c:boolean = true //false
 const d:null = null
 const e:volid = undefined
+const f:Symbol = Symbol()
 ```
-
+- 引用类型
+```
+const arr1:Array<number> = [1,2,3]
+const arr2:number[] = [1,2,3]
+const arr3:[string,number] = ['string',1]//元组
+const obj1:{foo?:string,bar:number} = {foo:'string',bar:2}/{bar:2} //添加?后该键值非必须
+```
 [代码示例](/TypeScript/flow/src/flow.js)
 
