@@ -45,8 +45,10 @@ const f:Symbol = Symbol()
 const arr1:Array<number> = [1,2,3]
 const arr2:number[] = [1,2,3]
 const arr3:[string,number] = ['string',1]//元组
+
 const obj1:{foo?:string,bar:number} = {foo:'string',bar:2}/{bar:2} //添加?后该属性非必须
 const obj2:{[string]:string}= {} //对象的键值都必须为字符串
+
 ```
 [代码示例](/TypeScript/flow/src/flow.js)
 
