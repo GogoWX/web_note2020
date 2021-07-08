@@ -49,6 +49,29 @@ const arr3:[string,number] = ['string',1]//元组
 const obj1:{foo?:string,bar:number} = {foo:'string',bar:2}/{bar:2} //添加?后该属性非必须
 const obj2:{[string]:string}= {} //对象的键值都必须为字符串
 
+const function func1(a:number,b:numer){return a+b};//函数参数的类型注解
+func1(100,200)
+const function func2(callback:(string,number) =>void){callback('string',100)};//以函数为参数；设置callback函数参数以及返回值的类型注解
+func2(function(str,n){ //str应为string类型，n应为数字类型
+    //逻辑代码
+})
 ```
+- 特殊类型
+```
+const a:'foo' = 'foo';//字面量，规定其只能是设置的值
+const type:'success'|'warning'|'danger' = 'success';//联合类型，只能是规定值/类型的其中之一
+type StringOrNumber = string | number;//给联合类型做别名
+const b: StringOrNumber = 'string'//或者100
+
+const gender:?number = undefined;//maybe类型，在设置的基础类型上增加 undefined和null的取值
+
+mixed/any //任意类型，mixed为强类型，没有隐式转换；any本质是弱类型
+```
+- 运行环境api
+```
+const element: HTMLElement | null = document.getElementById('app');vscode右键HTMLElement点击go to Definition 找到这个类型的声明文件
+```
+>flow类型手册：https://www.saltycrane.com/cheat-sheets/flow-type/latest/
+
 [代码示例](/TypeScript/flow/src/flow.js)
 
