@@ -13,4 +13,18 @@ yarn tsc //根据配置文件，将指定文件内的ts文件编译为js文件�
 ```
 ![tsconfig.json](./src/static/tsconfig.jpg "tsconfig.json")
 
+### 基本类型的可赋值范围
+```
+const a:string = 'string' 
+const b:number = Infinity //NaN // 100
+const c:boolean = true //false
+//前三种类型 在非严格模式下 可以为 null/undefined
+const d: void = undefined //空类型 非严格模式下 可以为 null
+const e:null = null
+const f:undefined = undefined
+const g:symbol = Symbol()
+```
+### 标准库声明 
+标准库就是内置对象所对应的声明，ts想要应用es内置对象，需在tsconfig中的lib中添加对应的标准库名称，见tsconfig.json
+
 [ts项目示例](/TypeScript/TS)
