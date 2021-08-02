@@ -1,19 +1,28 @@
 # TypeScript
 JavaScript的超集，增加了类型系统及对ES6+特性支持/自动转换的扩展，最后编译为JavaScript；相较于flow，作为一种完整的语言，TypeScript功能更加强大，生态也更加完善。
+
 ### 安装使用
+
 ```
 yarn init --yes //yarn初始化项目
 yarn add typescript --dev //安装ts
 yarn tsc 文件名//编译单个ts文件为js文件
 ```
+
 ### 配置文件
+
 ```
 yarn tsc --init //初始化 创建ts配置文件 tsconfig.json
 yarn tsc //根据配置文件，将指定文件内的ts文件编译为js文件，并放到指定的文件夹中
 ```
+
+>### 标准库声明 
+>标准库就是内置对象所对应的声明，ts想要应用es内置对象，需在tsconfig中的lib中添加对应的标准库名称，见tsconfig.json配置文件。
+
 ![tsconfig.json](./src/static/tsconfig.jpg "tsconfig.json")
 
-### 基本类型的可赋值范围
+### 基本类型
+
 ```
 const a:string = 'string' 
 const b:number = Infinity //NaN // 100
@@ -24,7 +33,35 @@ const e:null = null
 const f:undefined = undefined
 const g:symbol = Symbol()
 ```
-### 标准库声明 
-标准库就是内置对象所对应的声明，ts想要应用es内置对象，需在tsconfig中的lib中添加对应的标准库名称，见tsconfig.json
+
+### Object类型
+
+```
+const h:object = function(){} //[]//{} //指的是所有非原始类型
+const i:{foo:number,bar:string} = {foo:123,bar:'str'} //属性不能多也不能少
+```
+>更多的是应用接口来定义对象类型
+
+### 数组类型
+
+```
+const arr1:Array<number> = [1,2,3]
+const arr2:number[] = [1,2,3]
+
+function sum(...args:number[]) { //不必在内部进行类型判断
+    return args.reduce((prev,current) => prev + current , 0)
+}
+
+sum(1,2,3)
+```
+
+### 元组类型
+元组就是一个明确元素数量和每个元素类型的数组
+
+```
+const tuple: [number,string] = [123,'str']
+```
+
+### 枚举类型
 
 [ts项目示例](/TypeScript/TS)
