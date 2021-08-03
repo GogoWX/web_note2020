@@ -63,5 +63,26 @@ const tuple: [number,string] = [123,'str']
 ```
 
 ### 枚举类型
+枚举类型在，不设置里面键的值或者第一个键赋值为一个number时，会自动赋值累加；直接通过enum定义的枚举在ts编译为一个双向的键值对对象(也就是可以通过键获取值，也可以通过值获取键)；可通过const去定义常量枚举去除，并直接赋值。
+
+```
+enum PostStatus {
+    Draft = 'str',
+    published= 1,
+    unpublished = 0
+}
+const enum PostStatus {
+    Draft = 'str',
+    published= 1,
+    unpublished = 0
+}
+```
+
+### 函数类型
+
+```
+function func1(a:number,b:number,c?:number):string {return 'func1'}//函数声明：可选参数可以用?或者赋予默认值
+const func2: (a: number, b: number) => string = function(a:number,b:number):string {return 'func2'}//函数表达式
+```
 
 [ts项目示例](/TypeScript/TS)
