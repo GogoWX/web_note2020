@@ -1,4 +1,19 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var hello = function (name) { return console.log("hello," + name); };
 hello('TypeScript');
 function sum() {
@@ -43,4 +58,56 @@ printPost({ title: 'interface', content: 'hi', summary: 'readonly' });
 var catchi = {};
 catchi.foo = 'value1';
 catchi.bar = 'value2';
+//类
+var Person = /** @class */ (function () {
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.gender = true;
+    }
+    Person.prototype.sayHi = function (msg) {
+        console.log("I am " + this.name + "," + msg);
+        console.log(this.age);
+    };
+    return Person;
+}());
+var Students = /** @class */ (function (_super) {
+    __extends(Students, _super);
+    function Students(name, age) {
+        var _this = _super.call(this, name, age) || this;
+        console.log(_this.gender);
+        return _this;
+    }
+    Students.create = function (name, age) {
+        return new Students(name, age);
+    };
+    return Students;
+}(Person));
+var tom = new Person('tom', 18);
+console.log(tom.name);
+// console.log(tom.age);//无法获取
+// console.log(tom.gender);//无法获取
+var jack = Students.create('jack', 19);
+var Human = /** @class */ (function () {
+    function Human() {
+    }
+    Human.prototype.eat = function (food) {
+        console.log("\u4F18\u96C5\u7684\u8FDB\u98DF" + food);
+    };
+    Human.prototype.run = function (distance) {
+        console.log("\u76F4\u7ACB\u884C\u8D70" + distance);
+    };
+    return Human;
+}());
+var Animal = /** @class */ (function () {
+    function Animal() {
+    }
+    Animal.prototype.eat = function (food) {
+        console.log("\u72FC\u541E\u864E\u54BD" + food);
+    };
+    Animal.prototype.run = function (distance) {
+        console.log("\u722C\u884C" + distance);
+    };
+    return Animal;
+}());
 //# sourceMappingURL=getting-started.js.map

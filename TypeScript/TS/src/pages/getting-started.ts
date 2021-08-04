@@ -35,3 +35,56 @@ interface Catch {[prop:string]:string}
 const catchi: Catch = {};
 catchi.foo = 'value1';
 catchi.bar = 'value2';
+//类
+class Person{
+    public name:string;
+    private age:number;
+    protected readonly gender: boolean;
+    constructor(name:string,age:number) {
+        this.name = name;
+        this.age = age;
+        this.gender = true;
+    }
+    sayHi(msg:string):void {
+        console.log(`I am ${this.name},${msg}`)
+        console.log(this.age)
+    }
+}
+class Students extends Person {
+    private constructor(name:string,age:number) {
+        super(name,age)
+        console.log(this.gender)
+    }
+    static create(name:string,age:number) {
+        return new Students(name,age)
+    } 
+}
+const tom= new Person('tom',18);
+console.log(tom.name);
+// console.log(tom.age);//无法获取
+// console.log(tom.gender);//无法获取
+const jack = Students.create('jack',19);
+
+//类与接口
+interface Eat {
+    eat(foo:string):void
+}
+interface Run {
+    run(distance:number):void
+}
+class Human implements Eat,Run{
+    eat(food:string):void {
+        console.log(`优雅的进食${food}`)
+    }
+    run(distance:number):void {
+        console.log(`直立行走${distance}`)
+    }
+}
+class Animal implements Eat,Run{
+    eat(food:string):void {
+        console.log(`狼吞虎咽${food}`)
+    }
+    run(distance:number):void {
+        console.log(`爬行${distance}`)
+    }
+}
