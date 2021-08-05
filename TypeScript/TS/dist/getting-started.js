@@ -24,7 +24,9 @@ function sum() {
     return args.reduce(function (prev, current) { return prev + current; }, 0);
 } //不必在内部进行类型判断
 sum(1, 2, 3);
-//枚举类型
+/**
+ * 枚举类型
+ */
 var PostStatus;
 (function (PostStatus) {
     PostStatus["Draft"] = "str";
@@ -33,7 +35,9 @@ var PostStatus;
 })(PostStatus || (PostStatus = {}));
 console.log(PostStatus.Draft);
 console.log(1 /* published */);
-//函数类型
+/**
+ * 函数类型
+ */
 function func1(a, b) {
     var rest = [];
     for (var _i = 2; _i < arguments.length; _i++) {
@@ -44,7 +48,9 @@ function func1(a, b) {
 func1(1, 2);
 var func2 = function (a, b) { return 'func2'; }; //函数表达式，回调函数
 func2(3, 4);
-//类型断言
+/**
+ * 类型断言
+ */
 var nums = [1001, 1002, 1003];
 var res = nums.find(function (i) { return i > 0; });
 // const square = res * res;
@@ -58,7 +64,9 @@ printPost({ title: 'interface', content: 'hi', summary: 'readonly' });
 var catchi = {};
 catchi.foo = 'value1';
 catchi.bar = 'value2';
-//类
+/**
+ * 类
+ */
 var Person = /** @class */ (function () {
     function Person(name, age) {
         this.name = name;
@@ -110,4 +118,37 @@ var Animal = /** @class */ (function () {
     };
     return Animal;
 }());
+/**
+ * 抽象类
+ */
+var Animals = /** @class */ (function () {
+    function Animals() {
+    }
+    Animals.prototype.eat = function (food) {
+        console.log("\u72FC\u541E\u864E\u54BD" + food);
+    };
+    return Animals;
+}());
+var dog = /** @class */ (function (_super) {
+    __extends(dog, _super);
+    function dog() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    dog.prototype.run = function (distance) {
+        console.log("\u722C\u884C" + distance);
+    };
+    return dog;
+}(Animals));
+/**
+ * 泛型
+ */
+function createStringArray(length, value) {
+    var arr = Array(length).fill(value);
+    return arr;
+}
+function creatArray(length, value) {
+    var arr = Array(length).fill(value);
+    return arr;
+}
+var stringArr = creatArray(3, 'ts');
 //# sourceMappingURL=getting-started.js.map

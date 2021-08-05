@@ -209,5 +209,40 @@ class Animal implements Eat,Run{
     }
 }
 ```
+### 抽象类
+一个笼统的类，即可包含抽象的属性方法，也可包含具体的实现；只能被继承，不能直接new实例；
+
+```
+abstract class Animals {
+    eat(food:string):void {
+        console.log(`狼吞虎咽${food}`)
+    }
+    abstract run(distance:number):void;//抽象方法
+}
+class dog extends Animals {
+    run(distance: number): void {//继承抽象类时，必须实例抽象类中的抽象方法
+        console.log(`爬行${distance}`)
+    }
+}
+```
+
+### 泛型
+指在定义函数、接口、类的时候，不去指定具体类型，在使用时再指定类型；目的是极大程度上复用代码；
+
+```
+function createStringArray(length:number,value:string):string[] {
+    const arr = Array<string>(length).fill(value);
+    return arr
+}
+function creatArray<T>(length:number,value:T):T[] {//泛型定义
+    const arr = Array<T>(length).fill(value);
+    return arr
+}
+const stringArr = creatArray<string>(3,'ts');
+```
+
+### 类型声明
+在安装和使用其他npm模块时，可能会由于模块的方法未声明类型导致出现错误提示，大多数npm模块已经提供了ts类型声明，只需要根据提示安装相应的类型声明文件；此外如果没有此类声明模块可以在引入后使用declare为其单独声明其类型；
+
 
 [ts项目示例](/TypeScript/TS)
